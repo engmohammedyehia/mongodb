@@ -2,7 +2,7 @@
 
 require_once 'vendor/autoload.php';
 
-$client = new MongoDB\Client("mongodb://root:root@172.21.0.2:27017");
+$client = new MongoDB\Client("mongodb://root:root@mongo_container:27017");
 $collection = $client->users->cards;
 $result = $collection->insertMany(
     [
