@@ -1,0 +1,9 @@
+{
+  "name": "MongoDbTest",
+  "description": "Testing mongo db with php",
+  "require": {
+    "php": "^7.0",
+    "ext-mongodb": "*",
+    "mongodb/mongodb" : "*"
+  }
+}
