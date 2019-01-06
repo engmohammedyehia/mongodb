@@ -1,26 +1,28 @@
 version: '3.1'
 services:
   web:
-    image: firefoxegy/nginx_php7.2_xdebug_mongo
-    restart: unless-stopped
+    image: quay.io/firefoxegy/dev
+    restart: always
     volumes:
-    - ./:/var/www/html
+      - ./:/var/www/html
     ports:
-    - "80:80"
-    - "443:443"
+      - "80:80"
+      - "443:443"
     container_name: web_container
     environment:
-    - XDEBUG_REMOTE_IP=192.168.100.10
-    - COMPOSER_ALLOW_SUPERUSER=1
+      - XDEBUG_REMOTE_IP=192.168.100.10
+      - COMPOSER_ALLOW_SUPERUSER=1
     links:
-    - mongo
+      - mongo
     depends_on:
-    - mongo
+      - mongo
   mongo:
     image: mongo
     restart: always
     volumes:
-    - ./data:/data/db
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
     container_name: mongo_container
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
